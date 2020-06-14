@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html style="height: 100%; height: 100%;" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP4 LINKS TO LIVE</title>
+</head>
+
+<body style="width: 100%; height: 100%;">
+    <div style="min-height: 100%;justify-content: stretch; margin: 50px;display:
+        flex;flex-direction: column;">
+        <video style="flex-grow: 100;" id="vid" controls></video>
+        <div style="flex-grow: 1; display: flex; flex-direction: row;">
+            <textarea id="txt" placeholder="Past url link here!" style="resize: none;flex-grow: 10;"></textarea>
+            <button id="btn" style="flex-grow: 1; justify-self: end;">Set video source</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const btn = document.getElementById("btn")
+        const textarea = document.getElementById("txt")
+        const vid = document.getElementById("vid")
+        btn.onclick = (event) => {
+            let child = vid.lastElementChild;
+            while (child) {
+                vid.removeChild(child);
+                child = vid.lastElementChild;
+            }
+            let text = textarea.value
+            let source = document.createElement('source');
+            source.setAttribute("src", text)
+            source.setAttribute("id", "src")
+            vid.appendChild(source);
+            vid.play();
+        }
+    </script>
+</body>
+
+</html>
